@@ -1,0 +1,13 @@
+
+
+   else if (Input.GetKey(KeyCode.RightArrow))
+        {
+            //오른쪽이동
+            //anim.SetInteger("state", 1);
+            Vector3 scale = transform.localScale;
+            scale.x = Mathf.Abs(scale.x);
+            transform.localScale = scale;
+            transform.Translate(Vector3.right * amtMove * key);
+            //GetComponent<Animator>().SetTrigger("walk");
+            GetComponent<Animator>().SetInteger("state", 1);
+        }

@@ -1,0 +1,97 @@
+using UnityEngine;
+using System.Collections;
+
+public class PlayerCtrl : MonoBehaviour
+{
+    int speed = 5; //½ºÇÇµå
+    
+    Animator anim;
+    bool isground;
+    Transform groundchk;
+    float jumpPower = 20.0f;
+    public float jumpHeight; 
+    bool Jumping = false;
+
+    float accel;
+    float gravity;
+    float time;
+
+    // Use this for initialization
+    void Start()
+    {
+        groundchk = this.transform.FindChild("GroundCheck");
+        isground = false;
+    }
+    // Update is called once per frame
+
+    void Update()
+    {
+        float key = Input.GetAxis("Horizontal");
+        float amtMove = speed * Time.deltaTime;
+        Transform groundCheck = transform.Find("GroundCheck");
+        print(Jumping);
+        if (Input.GetButtonDown("Jump"))
+        {
+            if (Jumping == false)
+            {
+                GetComponent<Rigidbody2D>().AddForce(Vector2.up * jumpPower, ForceMode2D.Impulse);
+                Jumping = true;
+            }
+        }
+        if (Input.GetKey(KeyCode.LeftArrow))
+        {
+            //¿ÞÂÊ ÀÌµ¿
+            //anim.SetInteger("state",1);
+            Vector3 scale = transform.localScale;
+            scale.x = -Mathf.Abs(scale.x);
+            transform.localScale = scale;
+            transform.Translate(Vector3.right * amtMove * key);
+            GetComponent<Animator>().SetInteger("state", 1);
+
+        }
+     
+        else
+        {
+            //GetComponent<Animator>().SetTrigger("idle");
+            GetComponent<Animator>().SetInteger("state", 0);
+        }
+
+        if (!isground)
+        {
+            accel -= Time.deltaTime;
+            gravity += Time.deltaTime;
+            transform.Translate(Vector3.down * gravity * speed);
+
+        }
+        else
+        {
+            Jumping = false;
+            gravity = 0;
+            accel = 1;
+            if (Input.GetKeyDown(KeyCode.Space))
+            {
+                Jumping = true;
+            }
+
+        }
+
+        if (Jumping)
+        {
+            transform.Translate(Vector3.up * accel * speed);
+        }
+
+
+
+
+    }
+    //void OnCollisionEnter2D(Collision col)
+    //{
+    //    print("¾¾»¡");
+    //    if(col.gameObject.tag=="GameObject")
+    //    {
+    //        Jumping = false;
+    //    }
+
+    //}
+
+}
