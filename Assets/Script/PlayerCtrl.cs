@@ -3,43 +3,40 @@ using System.Collections;
 
 public class PlayerCtrl : MonoBehaviour
 {
-    int speed = 5; //스피드 
-    //Animator anim;
-    float jumpPower = 75.00f;	// 플레이어 캐릭터를 점프시켰을 때의 파워
-    bool isjump=false;
-    bool grounded;		// 접지 확인
+    int             speed;                  //스피드 
+    float           jumpPower;              // 플레이어 캐릭터를 점프시켰을 때의 파워
+    bool            isjump;
+    bool            grounded;		        // 접지 확인
+
     // Use this for initialization
     void Start()
     {
+        speed = 5;
+        jumpPower = 450.0f;
         grounded = false;
+        isjump = false;
     }
     // Update is called once per frame
 
     void Update()
     {
-
         float key = Input.GetAxis("Horizontal");
         float amtMove = speed * Time.deltaTime;
 
         //지면과의 충돌체크
-        Transform groundCheck = transform.Find("GroundCheck");
-        grounded = (Physics2D.OverlapPoint(groundCheck.position) != null) ? true : false;
-        if(isjump==true)
+        //Transform groundCheck = transform.Find("GroundCheck");
+        //grounded = (Physics2D.OverlapPoint(groundCheck.position) != null) ? true : false;
+        if(true==isjump)
         { 
             GetComponent<Animator>().SetInteger("state", 2);
-            print(isjump);
         }
         if (grounded)
         {
-            isjump = false;
-            print(isjump);
             // 점프 버튼 확인
-            if (Input.GetKey(KeyCode.Z))
+            if (Input.GetButtonDown("Jump"))
             {
-                isjump = true;
-                print(isjump);
                 // 점프 처리
-                GetComponent<Rigidbody2D>().AddForce(new Vector2(0.0f, jumpPower));
+                GetComponent<Rigidbody2D>().AddForce(new Vector2(0.0f, jumpPower));         
                 GetComponent<Animator>().SetInteger("state", 2);
                 //GetComponent<Rigidbody2D>().AddForce(Vector2.up,ForceMode2D.Impulse);
             }
@@ -82,9 +79,30 @@ public class PlayerCtrl : MonoBehaviour
         }
     }
 
-    void FixedUpdate()
+    void OnCollisionEnter2D(Collision2D coll)
     {
-        // 이동 계산
-       // GetComponent<Rigidbody2D>().velocity = new Vector2(0, GetComponent<Rigidbody2D>().velocity.y);
+        if(coll.gameObject.tag == "Tile")
+        {
+            isjump = false;
+            grounded = true;
+            print("enter");
+        }
     }
+    void OnCollisionStay2D(Collision2D coll)
+    {
+        if (coll.gameObject.tag == "Tile")
+        {
+            print("stay");
+        }
+    }
+    void OnCollisionExit2D(Collision2D coll)
+    {
+        if (coll.gameObject.tag == "Tile")
+        {
+            isjump = true;
+            grounded = false;
+            print("exit");
+        }
+    }
+
 }
