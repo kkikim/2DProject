@@ -64,6 +64,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Assets\Script\CameraMove.cs" />
+    <Compile Include="Assets\Script\Mushroom.cs" />
     <Compile Include="Assets\Script\PlayerCtrl.cs" />
     <Compile Include="Assets\Script\RandomBox.cs" />
   </ItemGroup>
