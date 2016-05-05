@@ -12,7 +12,7 @@ public class PlayerCtrl : MonoBehaviour
     void Start()
     {
         speed = 5;
-        jumpPower = 450.0f;
+        jumpPower = 800.0f;
         grounded = false;
         isjump = false;
     }
@@ -35,10 +35,14 @@ public class PlayerCtrl : MonoBehaviour
             // 점프 버튼 확인
             if (Input.GetButtonDown("Jump"))
             {
-                // 점프 처리
-                GetComponent<Rigidbody2D>().AddForce(new Vector2(0.0f, jumpPower));         
-                GetComponent<Animator>().SetInteger("state", 2);
-                //GetComponent<Rigidbody2D>().AddForce(Vector2.up,ForceMode2D.Impulse);
+                if (grounded == true&&isjump == false)
+                {// 점프 처리
+                    isjump = true;
+                    grounded = false;
+                    GetComponent<Rigidbody2D>().AddForce(new Vector2(0.0f, jumpPower));
+                    GetComponent<Animator>().SetInteger("state", 2);
+                    //GetComponent<Rigidbody2D>().AddForce(Vector2.up,ForceMode2D.Impulse);
+                }
             }
         }
 
@@ -99,8 +103,8 @@ public class PlayerCtrl : MonoBehaviour
     {
         if (coll.gameObject.tag == "Tile")
         {
-            isjump = true;
-            grounded = false;
+            //isjump = true;
+            //grounded = false;
             print("exit");
         }
     }
