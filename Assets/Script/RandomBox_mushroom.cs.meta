@@ -1,10 +1,11 @@
 fileFormatVersion: 2
 guid: b1883a308b0a1ac4a9673e49181f326c
-timeCreated: 1462352551
+timeCreated: 1462617208
 licenseType: Free
 MonoImporter:
   serializedVersion: 2
-  defaultReferences: []
+  defaultReferences:
+  - mushroom: {fileID: 111644, guid: a26e88a7c164def4a9366ad8093de3bc, type: 2}
   executionOrder: 0
   icon: {instanceID: 0}
   userData: 

@@ -64,9 +64,11 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Assets\Script\CameraMove.cs" />
+    <Compile Include="Assets\Script\Coin.cs" />
     <Compile Include="Assets\Script\Mushroom.cs" />
     <Compile Include="Assets\Script\PlayerCtrl.cs" />
-    <Compile Include="Assets\Script\RandomBox.cs" />
+    <Compile Include="Assets\Script\RandomBox_coin.cs" />
+    <Compile Include="Assets\Script\RandomBox_mushroom.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\SyntaxTree\UnityVS\2013\UnityVS.CSharp.targets" />
 </Project>
