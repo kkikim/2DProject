@@ -63,12 +63,42 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="2DProject.CSharp.Plugins.csproj">
+      <Project>{1487AB5F-EA80-33D1-BB9D-2F0C8C1096AC}</Project>
+      <Name>2DProject.CSharp.Plugins</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Assets\LeanTween\Examples\Scripts\GeneralBasicCS.cs" />
+    <Compile Include="Assets\LeanTween\Examples\Scripts\GeneralBasics2dCS.cs" />
+    <Compile Include="Assets\LeanTween\Examples\Scripts\GeneralCameraShake.cs" />
+    <Compile Include="Assets\LeanTween\Examples\Scripts\GeneralEventsListenersCS.cs" />
+    <Compile Include="Assets\LeanTween\Examples\Scripts\GeneralSimpleUiCS.cs" />
+    <Compile Include="Assets\LeanTween\Examples\Scripts\GeneralUISpaceCS.cs" />
+    <Compile Include="Assets\LeanTween\Examples\Scripts\LogoCinematic.cs" />
+    <Compile Include="Assets\LeanTween\Examples\Scripts\OldGUIExamplesCS.cs" />
+    <Compile Include="Assets\LeanTween\Examples\Scripts\PathSpline.cs" />
+    <Compile Include="Assets\LeanTween\Examples\Scripts\PathSpline2d.cs" />
+    <Compile Include="Assets\LeanTween\Examples\Scripts\PathSplines.cs" />
+    <Compile Include="Assets\LeanTween\Examples\Scripts\PathSplinesBezier.cs" />
+    <Compile Include="Assets\LeanTween\Examples\Scripts\TestingAllCS.cs" />
+    <Compile Include="Assets\LeanTween\Examples\Scripts\TestingEverything.cs" />
+    <Compile Include="Assets\LeanTween\Examples\Scripts\TestingPunch.cs" />
+    <Compile Include="Assets\LeanTween\Examples\Scripts\TestingRigidbodyCS.cs" />
     <Compile Include="Assets\Script\CameraMove.cs" />
     <Compile Include="Assets\Script\Coin.cs" />
+    <Compile Include="Assets\Script\CollideWithEnemy.cs" />
+    <Compile Include="Assets\Script\DestroyBlock.cs" />
+    <Compile Include="Assets\Script\Enemy\Goomba.cs" />
+    <Compile Include="Assets\Script\Enemy\GoombaCollidewithMario.cs" />
     <Compile Include="Assets\Script\Mushroom.cs" />
     <Compile Include="Assets\Script\PlayerCtrl.cs" />
     <Compile Include="Assets\Script\RandomBox_coin.cs" />
     <Compile Include="Assets\Script\RandomBox_mushroom.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Assets\LeanTween\Examples\Shader\2dUnlitWithFade.shader" />
+    <None Include="Assets\LeanTween\ReadMe.txt" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\SyntaxTree\UnityVS\2013\UnityVS.CSharp.targets" />
 </Project>
