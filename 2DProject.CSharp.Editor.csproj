@@ -108,6 +108,13 @@
   <ItemGroup>
     <None Include="Assets\LeanTween\Examples\Shader\2dUnlitWithFade.shader" />
     <None Include="Assets\LeanTween\ReadMe.txt" />
+    <None Include="Assets\Memotext\굼바뒤질때.txt" />
+    <None Include="Assets\Memotext\동전.txt" />
+    <None Include="Assets\Memotext\랜덤박스충돌.txt" />
+    <None Include="Assets\Memotext\마리오 스테이트.txt" />
+    <None Include="Assets\Memotext\새 텍스트 문서.txt" />
+    <None Include="Assets\Memotext\유니티 박스.txt" />
+    <None Include="Assets\Memotext\핑퐁.txt" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\SyntaxTree\UnityVS\2013\UnityVS.CSharp.targets" />
 </Project>
