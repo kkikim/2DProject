@@ -53,8 +53,6 @@ public class Goomba : MonoBehaviour {
            Destroy(this.gameObject, 1);
            dead = true;
            //Destroy(childOfGoomba);
-           
-
        }
     }
 }

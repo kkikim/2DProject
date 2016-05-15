@@ -91,6 +91,8 @@
     <Compile Include="Assets\Script\DestroyBlock.cs" />
     <Compile Include="Assets\Script\Enemy\Goomba.cs" />
     <Compile Include="Assets\Script\Enemy\GoombaCollidewithMario.cs" />
+    <Compile Include="Assets\Script\Enemy\Turtle.cs" />
+    <Compile Include="Assets\Script\Enemy\TurtleBoxChildChecker.cs" />
     <Compile Include="Assets\Script\Mushroom.cs" />
     <Compile Include="Assets\Script\PlayerCtrl.cs" />
     <Compile Include="Assets\Script\RandomBox_coin.cs" />
