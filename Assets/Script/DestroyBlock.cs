@@ -2,10 +2,10 @@
 using System.Collections;
 
 public class DestroyBlock : MonoBehaviour {
-
+    bool isMove;
 	// Use this for initialization
 	void Start () {
-	
+        isMove = false;
 	}
 	
 	// Update is called once per frame
@@ -16,8 +16,21 @@ public class DestroyBlock : MonoBehaviour {
     {
         if(coll.gameObject.name == "Player")
         {
-            print("11");
-            Destroy(this.gameObject);
+            LeanTween.moveY(this.gameObject, transform.position.y + 0.1f, 0.1f).setEase(LeanTweenType.easeInOutSine).
+                    setLoopPingPong(1).setOnComplete(Complete);
+
+            Vector3 pos = this.transform.position;
+            pos.y += 0.1f;
+            Invoke("destroy", 0.1f);
         }
+    }
+
+    void destroy()
+    {
+        Destroy(this.gameObject);
+    }
+    void Complete()
+    {
+        isMove = false;
     }
 }

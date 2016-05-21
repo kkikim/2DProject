@@ -20,7 +20,7 @@ public class CollideWithEnemy : MonoBehaviour {
             isMove = true;
             LeanTween.moveY(this.gameObject, transform.position.y + 1.5f, 0.2f).setEase(LeanTweenType.easeInOutSine).
                 setLoopPingPong(1).setOnComplete(Complete);
-
+          
             Vector3 pos = this.transform.position;
             pos.y += 0.1f;
         }

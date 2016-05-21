@@ -6,6 +6,7 @@ public class Goomba : MonoBehaviour {
     float               autoMove;
     float               speed;
     float               direction;
+    public float        moveRange;
     Vector2             firstPosition;
     Animator            goombaAnimator;
     BoxCollider2D       goombaBox;
@@ -15,6 +16,7 @@ public class Goomba : MonoBehaviour {
 	// Use this for initialization
 	void Start () 
     {
+        moveRange = 2.0f;
         autoMove    = 0;
         speed       = 3;
         direction   = 1;
@@ -32,9 +34,9 @@ public class Goomba : MonoBehaviour {
     {
         if (!dead)
         {
-            if (transform.position.x > firstPosition.x + 2.0f)
+            if (transform.position.x > firstPosition.x + moveRange)
                 direction *= -1;
-            if (transform.position.x < firstPosition.x - 2.0f)
+            if (transform.position.x < firstPosition.x - moveRange)
                 direction *= -1;
 
 
@@ -54,5 +56,15 @@ public class Goomba : MonoBehaviour {
            dead = true;
            //Destroy(childOfGoomba);
        }
+       if (coll.gameObject.tag=="Shell")
+       {
+           goombaAnimator.Play("GoombaDead");
+           Destroy(goombaBox);
+           Destroy(childBoxcollider);
+           Destroy(this.gameObject, 1);
+           dead = true;
+           //Destroy(childOfGoomba);
+       }
     }
+ 
 }

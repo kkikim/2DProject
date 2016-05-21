@@ -4,99 +4,52 @@ using System.Collections;
 public class Turtle : MonoBehaviour {
 
     float speed;
-    float shellSpeed;
     float direction;
-    
+    public GameObject Shell;
+
     Vector2 firstPosition;
     Animator turtleAnimator;
-    BoxCollider2D turtleBox;
-    BoxCollider2D childBoxcollider;
     GameObject childBox;
     SpriteRenderer turtleSR;
-
-    public bool MoveShell;
-    public float direction2;           //등딱지 와리가리 속력;
-    public bool dead;
+    Transform turtleTrans;
     // Use this for initialization
     void Start()
     {
         speed = 1.5f;
-        shellSpeed =  5.0f;
         direction = 1;
-        direction2 = 1;
         firstPosition = transform.position;
-        turtleAnimator = GetComponent<Animator>();
-        dead = false;
-        turtleBox = GetComponent<BoxCollider2D>();
-        childBox = transform.Find("TurtleBoxChecker").gameObject;
-        childBoxcollider = childBox.GetComponent<BoxCollider2D>();
         turtleSR = GetComponent<SpriteRenderer>();
         turtleSR.flipX = true;
-        MoveShell = false;
+        turtleTrans = GetComponent<Transform>();
     }
 
     // Update is called once per frame
     void Update()
     {
-        print(MoveShell);
-        if (!dead)
+        if (transform.position.x > firstPosition.x + 2.0f)
         {
-            if (transform.position.x > firstPosition.x + 2.0f)
-            {
-                turtleSR.flipX = false;
-                direction *= -1;
-            }
-            if (transform.position.x < firstPosition.x - 2.0f)
-            {
-                turtleSR.flipX = true;
-                direction *= -1;
-            }
-
-            transform.Translate(Vector2.right * speed * Time.deltaTime * direction);
+            //transform.position.x = new Vector2();
+            turtleSR.flipX = false;
+            direction *= -1;
         }
-        else if(dead)
+        if (transform.position.x < firstPosition.x - 2.0f)
         {
-            if(!MoveShell)
-                Invoke("AwakeTurtle", 15.0f);
-            else if (MoveShell)
-            {
-                CancelInvoke("AwakeTurtle");
-                transform.Translate(Vector2.right * shellSpeed * Time.deltaTime * direction2);
-            }
+            //turtleTrans.transform.position = new Vector2(turtleTrans.transform.position.x - 2.0f, 0.0f); 
+            turtleSR.flipX = true;
+            direction *= -1;
         }
-    }
-    void AwakeTurtle()
-    {
-        turtleAnimator.SetInteger("TurtleState", 2);
-        Invoke("RisenTurtle", 3.0f);
-    }
 
-    void RisenTurtle()
-    {
-        dead = false;
-        turtleBox.enabled = true;
-        turtleAnimator.Play("TurtleMove");
+        transform.Translate(Vector2.right * speed * Time.deltaTime * direction);
+     
     }
 
     void OnCollisionEnter2D(Collision2D coll)
     {
-        if (!dead)
+        if(coll.gameObject.tag == "Player")
         {
-            if (coll.gameObject.name == "Player")
-            {
-                //turtleAnimator.Play("TurtleDead");
-                turtleAnimator.SetInteger("TurtleState", 1);
-                //Destroy(turtleBox);
-                turtleBox.enabled = false;
-                //Destroy(childBoxcollider);
-                //Destroy(this.gameObject, 1);
-                Invoke("changeDeadState",0.1f);
-                //Destroy(childOfGoomba);
-            }
+            Destroy(this.gameObject);
+            Instantiate(Shell, new Vector2(this.transform.position.x , this.transform.position.y), Quaternion.identity);
         }
     }
-    void changeDeadState()
-    {
-        dead = true;
-    }
+
 }
