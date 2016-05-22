@@ -163,7 +163,7 @@ public class PlayerCtrl : MonoBehaviour
             grounded = false;
 
             marioAni.Play("dead");
-            GetComponent<Rigidbody2D>().AddForce(transform.up * 25, ForceMode2D.Impulse);
+            GetComponent<Rigidbody2D>().AddForce(transform.up * 15, ForceMode2D.Impulse);
             Destroy(marioBox);
         }
 

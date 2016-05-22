@@ -56,7 +56,6 @@ public class ParaTroopa : MonoBehaviour {
         {
             if (coll.gameObject.name == "Player")
             {
-                print("씨발");
                 turtleAnimator.SetInteger("TurtleState", 1);
                 LeanTween.moveY(this.gameObject, transform.position.y + 0.8f, 0.1f).setEase(LeanTweenType.easeInOutSine).
                     setLoopPingPong(1).setOnComplete(Complete);
