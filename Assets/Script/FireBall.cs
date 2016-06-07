@@ -6,6 +6,7 @@ public class FireBall : MonoBehaviour{
 
     Vector2 moveDirection;
     PlayerCtrl Move;
+    public GameObject fireParticle;
 	// Use this for initialization
 	void Start () 
     {
@@ -23,9 +24,7 @@ public class FireBall : MonoBehaviour{
 	}
     void OnCollisionEnter2D(Collision2D coll)
     {
-        if(coll.gameObject.tag == "Enemy" )
-        {
-            Destroy(this.gameObject);
-        }
+        Instantiate(fireParticle,this.transform.position,Quaternion.identity);
+        Destroy(this.gameObject);
     }
 }

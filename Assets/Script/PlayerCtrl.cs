@@ -178,7 +178,9 @@ public class PlayerCtrl : MonoBehaviour
 
         if (coll.gameObject.tag == "Mushroom")          //버섯 먹었을때
         {
-            marioAni.Play("b_idle");
+            marioAni.Play("bfroms");
+            Invoke("BigMarioPlay",0.8f);
+            //marioAni.Play("b_idle");
             currentMarioState = (int)MarioState.Big;
             marioBox.offset = new Vector2(0, 1);
             marioBox.size = new Vector2(0.5f, 2);
@@ -186,7 +188,9 @@ public class PlayerCtrl : MonoBehaviour
 
         if(coll.gameObject.tag == "Flower")             //꽃 먹었을때. 
         {
-            marioAni.Play("f_idle");
+            marioAni.Play("ffromb");
+            Invoke("FireMarioPlay",0.8f);
+            //marioAni.Play("f_idle");
             currentMarioState = (int)MarioState.Fire;
             marioBox.offset = new Vector2(0, 1);
             marioBox.size = new Vector2(0.5f, 2);
@@ -206,5 +210,12 @@ public class PlayerCtrl : MonoBehaviour
             print("exit");
         }
     }
- 
+    void BigMarioPlay()
+    {
+        marioAni.Play("b_idle");
+    }
+    void FireMarioPlay()
+    {
+        marioAni.Play("f_idle");
+    }
 }
