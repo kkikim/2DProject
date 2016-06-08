@@ -9,10 +9,10 @@ public class Goomba : MonoBehaviour {
     public float        moveRange;
     Vector2             firstPosition;
     Animator            goombaAnimator;
-    BoxCollider2D       goombaBox;
+    public BoxCollider2D       goombaBox;
     GameObject          childBox;
     BoxCollider2D       childBoxcollider;
-    bool                dead;
+    public bool                dead;
 	// Use this for initialization
 	void Start () 
     {
@@ -35,12 +35,21 @@ public class Goomba : MonoBehaviour {
         if (!dead)
         {
             if (transform.position.x > firstPosition.x + moveRange)
+            {
+                transform.position = new Vector2(firstPosition.x + moveRange,transform.position.y);
                 direction *= -1;
+            }
             if (transform.position.x < firstPosition.x - moveRange)
+            {
+                transform.position = new Vector2(firstPosition.x - moveRange, transform.position.y);
                 direction *= -1;
-
+            }
 
             transform.Translate(Vector2.right * speed * Time.deltaTime * direction);
+        }
+        if(dead)
+        {
+            Destroy(this.gameObject, 0.9f);
         }
 
         

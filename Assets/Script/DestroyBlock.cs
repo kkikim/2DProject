@@ -3,6 +3,7 @@ using System.Collections;
 
 public class DestroyBlock : MonoBehaviour {
     bool isMove;
+    public GameObject destroyParitcle;
 	// Use this for initialization
 	void Start () {
         isMove = false;
@@ -27,6 +28,7 @@ public class DestroyBlock : MonoBehaviour {
 
     void destroy()
     {
+        Instantiate(destroyParitcle,this.transform.position,Quaternion.identity);
         Destroy(this.gameObject);
     }
     void Complete()

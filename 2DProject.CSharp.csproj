@@ -89,9 +89,12 @@
     <Compile Include="Assets\Script\Coin.cs" />
     <Compile Include="Assets\Script\CollideWithEnemy.cs" />
     <Compile Include="Assets\Script\DestroyBlock.cs" />
+    <Compile Include="Assets\Script\Enemy\Blooper.cs" />
     <Compile Include="Assets\Script\Enemy\Cannon.cs" />
     <Compile Include="Assets\Script\Enemy\CannonBall.cs" />
+    <Compile Include="Assets\Script\Enemy\Cheep.cs" />
     <Compile Include="Assets\Script\Enemy\Goomba.cs" />
+    <Compile Include="Assets\Script\Enemy\GoombaBoxChecker.cs" />
     <Compile Include="Assets\Script\Enemy\HammerBros.cs" />
     <Compile Include="Assets\Script\Enemy\ParaTroopa.cs" />
     <Compile Include="Assets\Script\Enemy\ParaTroopaBoxChecker.cs" />
@@ -99,6 +102,7 @@
     <Compile Include="Assets\Script\Enemy\Spiny.cs" />
     <Compile Include="Assets\Script\Enemy\StepByPlayer_Troopa.cs" />
     <Compile Include="Assets\Script\Enemy\Turtle.cs" />
+    <Compile Include="Assets\Script\Enemy\flower.cs" />
     <Compile Include="Assets\Script\Enemy\hammer.cs" />
     <Compile Include="Assets\Script\Enemy\plant.cs" />
     <Compile Include="Assets\Script\FireBall.cs" />
@@ -112,7 +116,6 @@
     <Compile Include="Assets\Script\RandomBox_flower.cs" />
     <Compile Include="Assets\Script\RandomBox_mushroom.cs" />
     <Compile Include="Assets\Script\SceneChange.cs" />
-    <Compile Include="Assets\Script\flower.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets\LeanTween\Examples\Shader\2dUnlitWithFade.shader" />
